@@ -1,0 +1,60 @@
+name: Daily Auto-Publish 3 Reviews & Deploy SEO Calculator
+
+on:
+  schedule:
+    # Berjalan otomatis setiap hari pukul 06:00 UTC (13:00 WIB)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Bisa diklik manual kapan saja
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2. Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 3. Generate Website, +3 New Daily Reviews, Sitemap & Ping IndexNow
+        env:
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SITE_BASE_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+        run: |
+          python build.py
+
+      - name: 4. Save Daily Article State Back to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git diff --staged --quiet || (git commit -m "Auto-publish +3 new daily product reviews [skip ci]" && git push)
+
+      - name: 5. Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 6. Upload Static Site Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: 7. Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
