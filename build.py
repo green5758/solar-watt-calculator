@@ -1030,7 +1030,7 @@ def build_index_page(published_bps):
                         <span class="bg-amber-500 text-gray-950 text-xs font-extrabold px-2 py-0.5 rounded uppercase">Best Match For Your Load</span>
                         <h3 class="text-lg font-black text-gray-900 mt-1">${{best.name}}</h3>
                         <p class="text-xs text-gray-700 mt-0.5">
-                            Rated <strong>${{best.capacity_wh}}Wh</strong> | <strong>${{best.output_w}}W</strong> Output (${{best.surge_w}}W Surge) | Runs your ${{{watts}}}W load for ~<strong>${{estRuntime}} hours</strong> per charge.
+                            Rated <strong>${{best.capacity_wh}}Wh</strong> | <strong>${{best.output_w}}W</strong> Output (${{best.surge_w}}W Surge) | Runs your ${'${watts}'}W load for ~<strong>${{estRuntime}} hours</strong> per charge.
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
