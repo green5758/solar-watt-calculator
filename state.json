@@ -95,6 +95,18 @@
     {
       "slug": "bluetti-eb3a-for-cpap-machine-overnight-camping",
       "date": "2026-11-16"
+    },
+    {
+      "slug": "jackery-1000-v2-for-starlink-satellite-internet-off-grid",
+      "date": "2026-11-17"
+    },
+    {
+      "slug": "ecoflow-delta-2-for-starlink-satellite-internet-off-grid",
+      "date": "2026-11-17"
+    },
+    {
+      "slug": "bluetti-ac180-for-starlink-satellite-internet-off-grid",
+      "date": "2026-11-17"
     }
   ]
 }
