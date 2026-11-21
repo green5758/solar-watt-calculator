@@ -143,6 +143,18 @@
     {
       "slug": "bluetti-eb3a-for-starlink-satellite-internet-off-grid",
       "date": "2026-11-20"
+    },
+    {
+      "slug": "jackery-1000-v2-for-basement-sump-pump-storm-backup",
+      "date": "2026-11-21"
+    },
+    {
+      "slug": "ecoflow-delta-2-for-basement-sump-pump-storm-backup",
+      "date": "2026-11-21"
+    },
+    {
+      "slug": "bluetti-ac180-for-basement-sump-pump-storm-backup",
+      "date": "2026-11-21"
     }
   ]
 }
